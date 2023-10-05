@@ -7,6 +7,7 @@ import Header from "./Components/Header";
 const App = () => {
   return <div>
    <Header/>
+   <Login></Login>
   </div>;
 };
 
