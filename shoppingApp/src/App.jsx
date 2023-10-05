@@ -1,11 +1,12 @@
 import React from "react";
 import LoginIcon from '@mui/icons-material/Login';
+import Login from "./Components/Login";
+import Header from "./Components/Header";
 
 
 const App = () => {
   return <div>
-    <h1 className="text-4xl">Hello</h1>
-    <LoginIcon/>
+   <Header/>
   </div>;
 };
 
