@@ -1,14 +1,26 @@
 import React from "react";
-import LoginIcon from '@mui/icons-material/Login';
+import LoginIcon from "@mui/icons-material/Login";
 import Login from "./Components/Login";
 import Header from "./Components/Header";
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Body from "./Components/Body";
 
 const App = () => {
-  return <div>
-   <Header/>
-   <Login></Login>
-  </div>;
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Body />,
+    },
+    {
+      path: "/login",
+      element: <Login/>,
+    }
+  ]);
+  return (
+    <div>
+      <RouterProvider router={router}/>
+    </div>
+  );
 };
 
 export default App;

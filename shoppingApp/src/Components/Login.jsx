@@ -7,6 +7,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../Utils/firebase";
+import Header from "./Header";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [newUser, setNewUser] = useState(false);
@@ -17,6 +19,8 @@ const Login = () => {
   const [newuserformError, setNewUserFormError] = useState("");
 
   const [loginError, setLoginError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleNewUserFormSubmission = () => {
     const formvalidationMessage = validateEmailPasswordName(
@@ -35,6 +39,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
+          navigate("/")
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -56,6 +61,7 @@ const Login = () => {
     )
       .then((userCredential) => {
         const user = userCredential.user;
+        navigate("/")
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -76,6 +82,8 @@ const Login = () => {
   };
 
   return (
+    <>
+    <Header/>
     <div className="flex flex-col items-center">
       <div className="text-center text-2xl font-bold m-2">
         <span>
@@ -168,6 +176,7 @@ const Login = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 
