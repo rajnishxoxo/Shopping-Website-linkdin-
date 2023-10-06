@@ -1,12 +1,15 @@
 import React, { useRef, useState } from "react";
 import LockIcon from "@mui/icons-material/Lock";
 import { validateEmailPasswordName } from "../Utils/validation";
+import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 
 const Login = () => {
   const [newUser, setNewUser] = useState(false);
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
+
+  const [newuserformError, setNewUserFormError] = useState("");
 
   const handleNewUserFormSubmission = () => {
     const formvalidationMessage = validateEmailPasswordName(
@@ -15,7 +18,7 @@ const Login = () => {
       name.current.value
     );
 
-    console.log(formvalidationMessage);
+    setNewUserFormError(formvalidationMessage);
   };
 
   const handleNewUserForm = () => {
@@ -85,6 +88,19 @@ const Login = () => {
             ? "Already have an account? Login Now"
             : " Don't have an account? Sign Up"}
         </p>
+        {newuserformError && (
+          <div
+            className="bg-red-500 bg-opacity-50 border border-red-700 w-60 h-20 rounded-lg text-center absolute top-60 right-0 mr-5"
+            style={{ backgroundColor: "rgba(255, 0, 0, 0.5)" }}
+          >
+            <p className="text-white text-xl mt-4">
+              {newuserformError}
+              <span>
+                <SentimentVeryDissatisfiedIcon />
+              </span>
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
