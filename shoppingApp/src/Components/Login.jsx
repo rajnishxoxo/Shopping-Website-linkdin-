@@ -47,7 +47,7 @@ const Login = () => {
             className="p-3  w-4/5 mx-auto mb-8 border-4"
           />
           <button className=" w-4/5 mx-auto p-4 bg-blue-600 text-lg font-bold">
-            SIGN IN
+            {newUser?'SIGN UP':'SIGN IN'}
           </button>
         </form>
         <p className="text-lg text-center mt-3 cursor-pointer" onClick={handleNewUserForm}>
