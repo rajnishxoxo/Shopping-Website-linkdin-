@@ -18,8 +18,6 @@ const Login = () => {
 
   const [loginError, setLoginError] = useState("");
 
-  const [userloggedIn , setUserLogin] = useState(false)
-
   const handleNewUserFormSubmission = () => {
     const formvalidationMessage = validateEmailPasswordName(
       email.current.value,
@@ -36,19 +34,18 @@ const Login = () => {
         password.current.value
       )
         .then((userCredential) => {
-          // Signed up
           const user = userCredential.user;
-          setUserLogIn(true);
-          console.log(user);
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setNewUserFormError(error + errorMessage);
-          // ..
         });
     }
+
+    setTimeout(() => {
+      setNewUserFormError(null);
+    }, 4000);
   };
 
   const handleLoginFormSubmission = () => {
@@ -58,16 +55,15 @@ const Login = () => {
       password.current.value
     )
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-        console.log(user);
-        setUserLogIn(true);
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setLoginError(errorCode + errorMessage);
+        setTimeout(() => {
+          setLoginError(null);
+        }, 4000);
       });
   };
 
@@ -155,7 +151,7 @@ const Login = () => {
           </div>
         )}
 
-        {userloggedIn?loginError && newUser == false && (
+        {loginError && (
           <>
             <div
               className="bg-red-500 bg-opacity-50 border border-red-700 w-60 h-20 rounded-lg text-center absolute top-60 right-0 mr-5 lg:top-28"
@@ -169,7 +165,7 @@ const Login = () => {
               </p>
             </div>
           </>
-        ):""}
+        )}
       </div>
     </div>
   );
