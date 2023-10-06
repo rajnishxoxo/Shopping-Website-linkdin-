@@ -90,7 +90,7 @@ const Login = () => {
         </p>
         {newuserformError && (
           <div
-            className="bg-red-500 bg-opacity-50 border border-red-700 w-60 h-20 rounded-lg text-center absolute top-60 right-0 mr-5"
+            className="bg-red-500 bg-opacity-50 border border-red-700 w-60 h-20 rounded-lg text-center absolute top-60 right-0 mr-5 lg:top-28"
             style={{ backgroundColor: "rgba(255, 0, 0, 0.5)" }}
           >
             <p className="text-white text-xl mt-4">
