@@ -2,6 +2,11 @@ import React, { useRef, useState } from "react";
 import LockIcon from "@mui/icons-material/Lock";
 import { validateEmailPasswordName } from "../Utils/validation";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../Utils/firebase";
 
 const Login = () => {
   const [newUser, setNewUser] = useState(false);
@@ -11,6 +16,10 @@ const Login = () => {
 
   const [newuserformError, setNewUserFormError] = useState("");
 
+  const [loginError, setLoginError] = useState("");
+
+  const [userloggedIn , setUserLogin] = useState(false)
+
   const handleNewUserFormSubmission = () => {
     const formvalidationMessage = validateEmailPasswordName(
       email.current.value,
@@ -19,6 +28,47 @@ const Login = () => {
     );
 
     setNewUserFormError(formvalidationMessage);
+
+    if (formvalidationMessage == null) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          setUserLogIn(true);
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setNewUserFormError(error + errorMessage);
+          // ..
+        });
+    }
+  };
+
+  const handleLoginFormSubmission = () => {
+    signInWithEmailAndPassword(
+      auth,
+      email.current.value,
+      password.current.value
+    )
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        setUserLogIn(true);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setLoginError(errorCode + errorMessage);
+      });
   };
 
   const handleNewUserForm = () => {
@@ -75,7 +125,10 @@ const Login = () => {
               SIGNUP
             </button>
           ) : (
-            <button className=" w-4/5 mx-auto p-4 bg-blue-600 text-lg font-bold">
+            <button
+              className=" w-4/5 mx-auto p-4 bg-blue-600 text-lg font-bold"
+              onClick={handleLoginFormSubmission}
+            >
               LOGIN
             </button>
           )}
@@ -88,7 +141,7 @@ const Login = () => {
             ? "Already have an account? Login Now"
             : " Don't have an account? Sign Up"}
         </p>
-        {newuserformError && (
+        {newuserformError && newUser && (
           <div
             className="bg-red-500 bg-opacity-50 border border-red-700 w-60 h-20 rounded-lg text-center absolute top-60 right-0 mr-5 lg:top-28"
             style={{ backgroundColor: "rgba(255, 0, 0, 0.5)" }}
@@ -101,6 +154,22 @@ const Login = () => {
             </p>
           </div>
         )}
+
+        {userloggedIn?loginError && newUser == false && (
+          <>
+            <div
+              className="bg-red-500 bg-opacity-50 border border-red-700 w-60 h-20 rounded-lg text-center absolute top-60 right-0 mr-5 lg:top-28"
+              style={{ backgroundColor: "rgba(255, 0, 0, 0.5)" }}
+            >
+              <p className="text-white text-xl mt-4">
+                {loginError}
+                <span>
+                  <SentimentVeryDissatisfiedIcon />
+                </span>
+              </p>
+            </div>
+          </>
+        ):""}
       </div>
     </div>
   );
