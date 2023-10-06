@@ -51,7 +51,7 @@ const Login = () => {
           </button>
         </form>
         <p className="text-lg text-center mt-3 cursor-pointer" onClick={handleNewUserForm}>
-          Don't have an account? Sign Up
+         {newUser?"Already have an account? Login Now":" Don't have an account? Sign Up"}
         </p>
       </div>
     </div>
