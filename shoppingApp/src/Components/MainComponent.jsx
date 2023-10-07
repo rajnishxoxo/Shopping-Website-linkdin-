@@ -4,7 +4,7 @@ const MainComponent = () => {
   const scrollContainerRef = useRef(null);
   const imageWidth = 400;
   const scrollSpeed = 1;
-  const scrollDirection = useRef("right"); 
+  const scrollDirection = useRef("right");
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
     const maxScrollLeft =
