@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "./Header";
+import MainComponent from "./MainComponent";
 
 const Body = () => {
   return (
     <>
       <Header />
-      <div>Body</div>
+      <MainComponent/> 
     </>
   );
 };
