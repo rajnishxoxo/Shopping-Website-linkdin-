@@ -29,3 +29,20 @@
     transform: scaleX(1);
   }
   
+  ::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: black;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover{
+      background: darkgray;
+  }
