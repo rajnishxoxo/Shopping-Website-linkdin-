@@ -12,10 +12,10 @@ const SecondaryComponent = () => {
       <h1 className="text-center text-6xl mt-4 text-green-600 font-normal">
         Categories
       </h1>
-      <div class="grid grid-cols-2 gap-4 mt-5">
+      <div class="grid grid-cols-2 gap-4 mt-5 lg:ml-40 lg:mb-10 ">
         <div className="flex-shrink-0 lg:w-[400px]">
           <img
-            className=" rounded"
+            className=" rounded transition-transform transform hover:scale-110 cursor-pointer"
             onClick={() => {
               handleImageClick("men's clothing");
             }}
@@ -25,7 +25,7 @@ const SecondaryComponent = () => {
         </div>
         <div className=" flex-shrink-0 lg:w-[400px]">
           <img
-            className=" rounded"
+            className=" rounded transition-transform transform hover:scale-110 cursor-pointer"
             onClick={() => {
               handleImageClick("jewelery");
             }}
@@ -35,7 +35,7 @@ const SecondaryComponent = () => {
         </div>
         <div className="flex-shrink-0 lg:w-[400px]">
           <img
-            className=" rounded"
+            className=" rounded transition-transform transform hover:scale-110 cursor-pointer"
             onClick={() => {
               handleImageClick("women's clothing");
             }}
@@ -45,7 +45,7 @@ const SecondaryComponent = () => {
         </div>
         <div className=" flex-shrink-0 lg:w-[400px]">
           <img
-            className=" rounded"
+            className=" rounded transition-transform transform hover:scale-110 cursor-pointer"
             onClick={() => {
               handleImageClick("electronics");
             }}
