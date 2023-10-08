@@ -13,17 +13,7 @@ const Product = () => {
 
   return (
     <div>
-      {product.map((product) => {
-        const { title, image, price, rating, id } = product;
-        return(
-          <DisplayProduct
-          title={title}
-          image={image}
-          price={price}
-          rating={rating}
-        />
-        )
-      })}
+      <DisplayProduct/>
     </div>
   );
 };
