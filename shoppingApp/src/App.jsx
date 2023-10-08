@@ -1,10 +1,11 @@
 import React from "react";
-import LoginIcon from "@mui/icons-material/Login";
 import Login from "./Components/Login";
-import Header from "./Components/Header";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Body from "./Components/Body";
-import Product from "./Components/Product";
+import MensSection from "./Components/ProductSection/MensSection";
+import WomenSection from "./Components/ProductSection/WomenSection";
+import JewellerySection from "./Components/ProductSection/JewellerySection";
+import ElectronicsSection from "./Components/ProductSection/ElectronicsSection";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -14,16 +15,29 @@ const App = () => {
     },
     {
       path: "/login",
-      element: <Login/>,
+      element: <Login />,
+    },
+    ,
+    {
+      path: "/product/menswear",
+      element: <MensSection />,
     },
     {
-      path: "/product/:id",
-      element: <Product/>,
-    }
+      path: "/product/womenswear",
+      element: <WomenSection />,
+    },
+    {
+      path: "/product/jewellery",
+      element: <JewellerySection />,
+    },
+    {
+      path: "/product/electronics",
+      element: <ElectronicsSection />,
+    },
   ]);
   return (
     <div>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </div>
   );
 };

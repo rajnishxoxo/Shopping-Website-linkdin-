@@ -17,7 +17,7 @@ const SecondaryComponent = () => {
           <img
             className=" rounded transition-transform transform hover:scale-110 cursor-pointer"
             onClick={() => {
-              handleImageClick("men's clothing");
+              handleImageClick("menswear");
             }}
             src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Male-Cloth_fyyrzb.jpg"
             alt="Image 2"
@@ -27,7 +27,7 @@ const SecondaryComponent = () => {
           <img
             className=" rounded transition-transform transform hover:scale-110 cursor-pointer"
             onClick={() => {
-              handleImageClick("jewelery");
+              handleImageClick("jewellery");
             }}
             src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/model-jwellery_qlcjog.jpg"
             alt="Image 3"
@@ -37,7 +37,7 @@ const SecondaryComponent = () => {
           <img
             className=" rounded transition-transform transform hover:scale-110 cursor-pointer"
             onClick={() => {
-              handleImageClick("women's clothing");
+              handleImageClick("womenswear");
             }}
             src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838912/Cloths_kpwmp2.jpg"
             alt="Image 4"
