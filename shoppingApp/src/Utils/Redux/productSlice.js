@@ -14,10 +14,13 @@ const productSlice = createSlice({
     },
     addWomensProduct: (state, action) => {
       state.womenswear = action.payload;
+    }, 
+    addJewellery: (state, action) => {
+      state.jewellery = action.payload;
     }
   },
 });
 
-export const { addMensProduct,addWomensProduct } = productSlice.actions;
+export const { addMensProduct,addWomensProduct,addJewellery } = productSlice.actions;
 
 export default productSlice.reducer;
