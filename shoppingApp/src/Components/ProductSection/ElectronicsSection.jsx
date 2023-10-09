@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
@@ -46,13 +46,22 @@ const ElectronicsSection = () => {
         break;
       }
       case "SDD": {
-        const displaySDD = Displayproduct.filter((data)=>data.title.includes("SSD "));
-        console.log(displaySDD)
+        const displaySDD = Displayproduct.filter((data) =>
+          data.title.includes("SSD ")
+        );
+        console.log(displaySDD);
         setFilterProduct(displaySDD);
         break;
       }
     }
   };
+
+  useEffect(() => {
+    const defaultProductArrangement = [...Displayproduct].sort(
+      (a, b) => a.price - b.price
+    );
+    setFilterProduct(defaultProductArrangement);
+  }, []);
 
   return (
     <div>
