@@ -75,7 +75,7 @@ const ElectronicsSection = () => {
         <select
           value={selectedFilter}
           onChange={handleFilterChange}
-          className="w-28 bg-slate-600 text-white"
+          className="w-28 bg-slate-600 font-bold text-white"
         >
           <option value="Low to High">Low price</option>
           <option value="High to Low">High price</option>
