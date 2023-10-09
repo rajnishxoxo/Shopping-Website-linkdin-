@@ -17,10 +17,13 @@ const productSlice = createSlice({
     }, 
     addJewellery: (state, action) => {
       state.jewellery = action.payload;
+    },
+    addElectronics: (state, action) => {
+      state.electronics = action.payload;
     }
   },
 });
 
-export const { addMensProduct,addWomensProduct,addJewellery } = productSlice.actions;
+export const { addMensProduct,addWomensProduct,addJewellery,addElectronics } = productSlice.actions;
 
 export default productSlice.reducer;
