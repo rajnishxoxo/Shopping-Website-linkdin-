@@ -12,9 +12,12 @@ const productSlice = createSlice({
     addMensProduct: (state, action) => {
       state.menswear = action.payload;
     },
+    addWomensProduct: (state, action) => {
+      state.womenswear = action.payload;
+    }
   },
 });
 
-export const { addMensProduct } = productSlice.actions;
+export const { addMensProduct,addWomensProduct } = productSlice.actions;
 
 export default productSlice.reducer;
