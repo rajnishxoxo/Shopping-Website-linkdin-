@@ -6,6 +6,7 @@ import MensSection from "./Components/ProductSection/MensSection";
 import WomenSection from "./Components/ProductSection/WomenSection";
 import JewellerySection from "./Components/ProductSection/JewellerySection";
 import ElectronicsSection from "./Components/ProductSection/ElectronicsSection";
+import SingleDisplayProduct from "./Components/ProductSection/SingleDisplayProduct";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const App = () => {
       path: "/product/electronics",
       element: <ElectronicsSection />,
     },
+    {
+      path:"/detail/:id",
+      element:<SingleDisplayProduct/>
+    }
   ]);
   return (
     <div>

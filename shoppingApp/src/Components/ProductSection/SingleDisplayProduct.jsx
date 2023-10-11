@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import useGetProductInfo from "../../Hooks/useGetProductInfo";
 
 const SingleDisplayProduct = () => {
-  return (
-    <div>SingleDisplayProduct</div>
-  )
-}
+    const [productDetail , setProductDetail] = useState("");
+  const { id } = useParams();
 
-export default SingleDisplayProduct
+  const product = useGetProductInfo(id);
+  console.log(product);
+
+  return;
+  <div></div>;
+};
+
+export default SingleDisplayProduct;
