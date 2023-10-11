@@ -13,7 +13,7 @@ const JewellerySection = () => {
   const handleFilterChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedFilter(selectedValue);
-    console.log(selectedValue);
+  
     switch (selectedValue) {
       case "Low to High": {
         setFilterProduct([...Displayproduct].sort((a, b) => a.price - b.price));
