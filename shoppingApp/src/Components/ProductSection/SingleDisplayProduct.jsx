@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import useGetProductInfo from "../../Hooks/useGetProductInfo";
 import StarIcon from "@mui/icons-material/Star";
 import DiscountIcon from "@mui/icons-material/Discount";
+import Header from "../Header";
+
 
 const SingleDisplayProduct = () => {
   const { id } = useParams();
@@ -14,8 +16,10 @@ const SingleDisplayProduct = () => {
   if (product === null) return;
 
   return (
+
     <div>
-      <div className="flex flex-col">
+        <Header/>
+      <div className="flex flex-col mt-2">
         <p className="bg-blue-600 h-auto text-white rounded w-24">{category}</p>
         <img
           className="w-[200px] mt-3 shadow  mx-auto border border-black"
