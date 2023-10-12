@@ -3,6 +3,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HomeIcon from "@mui/icons-material/Home";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LoginIcon from "@mui/icons-material/Login";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -12,18 +13,24 @@ const Header = () => {
       </div>
       <div className="w-2/5">
         <ul className="flex flex-col items-center  justify-between lg:flex-row">
-          <li class="text-2xl mb-2 font-medium relative">
-            Home <HomeIcon />
-          </li>
-          <li class="text-2xl mb-2 font-medium relative">
-            Cart <ShoppingCartIcon />
-          </li>
+          <Link to={"/"}>
+            <li class="text-2xl mb-2 font-medium relative">
+              Home <HomeIcon />
+            </li>
+          </Link>
+          <Link to={'/cart'}>
+            <li class="text-2xl mb-2 font-medium relative">
+              Cart <ShoppingCartIcon />
+            </li>
+          </Link>
           <li class="text-2xl mb-2 font-medium relative">
             WishList <FavoriteIcon />
           </li>
+          <Link to={'/login'}>
           <li class="text-2xl mb-2 font-medium relative">
             Login <LoginIcon />
           </li>
+          </Link>
         </ul>
       </div>
     </div>
