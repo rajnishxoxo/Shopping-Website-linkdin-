@@ -6,6 +6,7 @@ import useGetMensSection from "../Hooks/useGetMensSection";
 import useGetWomenSection from "../Hooks/useGetWomenSection";
 import usejewellerySection from "../Hooks/useJewellerySection";
 import useGetElectronicsSection from "../Hooks/useGetElectronicsSection";
+import Cart from "./Cart";
 
 const Body = () => {
   useGetMensSection();
@@ -16,7 +17,7 @@ const Body = () => {
     <>
       <Header />
       <MainComponent />
-      <SecondaryComponent/>
+      <SecondaryComponent />
     </>
   );
 };

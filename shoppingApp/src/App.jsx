@@ -7,6 +7,7 @@ import WomenSection from "./Components/ProductSection/WomenSection";
 import JewellerySection from "./Components/ProductSection/JewellerySection";
 import ElectronicsSection from "./Components/ProductSection/ElectronicsSection";
 import SingleDisplayProduct from "./Components/ProductSection/SingleDisplayProduct";
+import Cart from "./Components/Cart";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const App = () => {
     {
       path:"/detail/:id",
       element:<SingleDisplayProduct/>
+    },
+    {
+      path:"/cart",
+      element:<Cart/>
     }
   ]);
   return (

@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useGetProductInfo from "../../Hooks/useGetProductInfo";
 import StarIcon from "@mui/icons-material/Star";
 import DiscountIcon from "@mui/icons-material/Discount";
 import Header from "../Header";
-import {  useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../Utils/Redux/CartSlice";
 
-
-
 const SingleDisplayProduct = () => {
-
   const { id } = useParams();
 
   const product = useGetProductInfo(id);
@@ -18,21 +15,21 @@ const SingleDisplayProduct = () => {
   const { description, image, price, title, rating, category } = product;
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleAddToCart = ()=>{
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
 
-    dispatch(addToCart(product))
-  }
-
-  const cartItem = useSelector((state)=>state.cart);
-  console.log(cartItem)
+  const handleNavigationToCart = () => {
+    navigate("/cart");
+  };
 
   if (product === null) return;
 
   return (
-
     <div>
-        <Header/>
+      <Header />
       <div className="flex flex-col mt-2">
         <p className="bg-blue-600 h-auto text-white rounded w-24">{category}</p>
         <img
@@ -55,12 +52,20 @@ const SingleDisplayProduct = () => {
           Upto 9% off
         </p>
         <p className=" text-center mt-2 text-xl font-bold">PRICE :{price}$</p>
-      </div> 
+      </div>
       <div className="flex flex-row w-3/4 mx-auto   items-center">
-        <button onClick={handleAddToCart} className="text-xl font-normal m-2  text-white bg-blue-600 rounded">
+        <button
+          onClick={handleAddToCart}
+          className="text-xl font-normal m-2  text-white bg-blue-600 rounded"
+        >
           ADD TO CART
         </button>
-        <button className="text-xl font-normal m-2  text-white bg-blue-600 rounded">
+        <button
+          onClick={() => {
+            handleNavigationToCart();
+          }}
+          className="text-xl font-normal m-2  text-white bg-blue-600 rounded"
+        >
           PROCEED TO CART
         </button>
       </div>
