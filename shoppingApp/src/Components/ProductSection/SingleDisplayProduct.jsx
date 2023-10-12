@@ -8,6 +8,7 @@ import DisplaySingleProduct from "../DisplaySingleProduct";
 
 const SingleDisplayProduct = () => {
   const { id } = useParams();
+  const [addToCartDiv, setAddToCartDiv] = useState(false);
 
   const product = useGetProductInfo(id);
 
@@ -18,6 +19,11 @@ const SingleDisplayProduct = () => {
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
+
+    setAddToCartDiv(true);
+    setTimeout(() => {
+      setAddToCartDiv(false);
+    }, 2000);
   };
 
   const handleNavigationToCart = () => {
@@ -35,6 +41,7 @@ const SingleDisplayProduct = () => {
       price={price}
       handleAddToCart={handleAddToCart}
       handleNavigationToCart={handleNavigationToCart}
+      addToCartDiv={addToCartDiv}
     />
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import DiscountIcon from "@mui/icons-material/Discount";
 import Header from "./Header";
@@ -12,7 +12,11 @@ const DisplaySingleProduct = ({
   rating,
   handleAddToCart,
   handleNavigationToCart,
+  addToCartDiv,
 }) => {
+  if (description == null) return;
+  const shortDis = description.slice(0, 30);
+
   return (
     <div>
       <div>
@@ -21,13 +25,22 @@ const DisplaySingleProduct = ({
           <p className="bg-blue-600 h-auto text-white rounded w-24">
             {category}
           </p>
+
+          {addToCartDiv ? (
+            <div className="w-[200px] bg-green-500 absolute rounded-lg right-0 h-[50px] text-center">
+              <h1 className="text-xl font-normal">Added to Cart.</h1>
+            </div>
+          ) : (
+            <div></div>
+          )}
+
           <img
             className="w-[200px] mt-3 shadow  mx-auto border border-black"
             src={image}
           />
 
           <h1 className="text-2xl font-bold m-3 text-center">{title}</h1>
-          <p className="text-lg font-bold m-3 text-center">{description}</p>
+          <p className="text-lg font-bold m-3 text-center">{shortDis}...</p>
           <p className="text-center text-lg m-2 font-bold">
             {rating?.rate}
             <span>
