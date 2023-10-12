@@ -4,14 +4,28 @@ import useGetProductInfo from "../../Hooks/useGetProductInfo";
 import StarIcon from "@mui/icons-material/Star";
 import DiscountIcon from "@mui/icons-material/Discount";
 import Header from "../Header";
+import {  useDispatch, useSelector } from 'react-redux'
+import { addToCart } from "../../Utils/Redux/CartSlice";
+
 
 
 const SingleDisplayProduct = () => {
+
   const { id } = useParams();
 
   const product = useGetProductInfo(id);
 
   const { description, image, price, title, rating, category } = product;
+
+  const dispatch = useDispatch();
+
+  const handleAddToCart = ()=>{
+
+    dispatch(addToCart(product))
+  }
+
+  const cartItem = useSelector((state)=>state.cart);
+  console.log(cartItem)
 
   if (product === null) return;
 
@@ -43,7 +57,7 @@ const SingleDisplayProduct = () => {
         <p className=" text-center mt-2 text-xl font-bold">PRICE :{price}$</p>
       </div> 
       <div className="flex flex-row w-3/4 mx-auto   items-center">
-        <button className="text-xl font-normal m-2  text-white bg-blue-600 rounded">
+        <button onClick={handleAddToCart} className="text-xl font-normal m-2  text-white bg-blue-600 rounded">
           ADD TO CART
         </button>
         <button className="text-xl font-normal m-2  text-white bg-blue-600 rounded">
