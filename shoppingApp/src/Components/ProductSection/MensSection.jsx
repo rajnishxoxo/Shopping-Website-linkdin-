@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import { Link } from "react-router-dom";
 
 const MensSection = () => {
   const productDetails = useSelector((state) => state.product.menswear);
@@ -59,7 +60,7 @@ const MensSection = () => {
         </select>
       </div>
       {filterProduct.map((product) => {
-        const { title, image, price, rating } = product;
+        const { title, image, price, rating,id } = product;
         const shortTitle = title.slice(0, 20);
 
         return (
@@ -67,6 +68,8 @@ const MensSection = () => {
             key={product.id}
             className="flex flex-col justify-evenly lg:flex lg:grid-rows-2"
           >
+                        <Link to={`/detail/${id}`} key={id}>
+
             <div className="w-[200px] mx-auto m-2 border border-solid border-gray-300 shadow rounded-lg">
               <img
                 src={image}
@@ -84,6 +87,7 @@ const MensSection = () => {
                 </p>
               </div>
             </div>
+            </Link>
           </div>
         );
       })}

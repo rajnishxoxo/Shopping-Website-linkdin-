@@ -65,10 +65,10 @@ const Cart = () => {
           })}
         </div>
         <h1
-          className="bg-green-400 rounded w-[200px] h-[40px] text-center mx-auto
+          className="bg-green-400 text-xl font-normal rounded w-[250px] h-[40px] text-center mx-auto
          m-4"
         >
-          Proceed to Checkout{" "}
+          Proceed to Checkout
           <span>
             <ShoppingCartCheckoutIcon />
           </span>
