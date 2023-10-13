@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import DiscountIcon from "@mui/icons-material/Discount";
 import Header from "./Header";
+import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../Utils/firebase";
 
 const DisplaySingleProduct = ({
   category,
@@ -14,6 +17,15 @@ const DisplaySingleProduct = ({
   handleNavigationToCart,
   addToCartDiv,
 }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+      } else {
+        navigate("/login");
+      }
+    });
+  }, []);
   if (description == null) return;
   const shortDis = description.slice(0, 30);
 

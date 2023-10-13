@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Login from "./Components/Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Body from "./Components/Body";
@@ -9,12 +9,28 @@ import ElectronicsSection from "./Components/ProductSection/ElectronicsSection";
 import SingleDisplayProduct from "./Components/ProductSection/SingleDisplayProduct";
 import Cart from "./Components/Cart";
 import Checkout from "./Components/Checkout";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./Utils/firebase";
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+  }, []);
+
+  console.log(isLoggedIn);
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Body />,
+      element: isLoggedIn ? <Body /> : <Login />,
     },
     {
       path: "/login",
@@ -38,17 +54,17 @@ const App = () => {
       element: <ElectronicsSection />,
     },
     {
-      path:"/detail/:id",
-      element:<SingleDisplayProduct/>
+      path: "/detail/:id",
+      element: <SingleDisplayProduct />,
     },
     {
-      path:"/cart",
-      element:<Cart/>
+      path: "/cart",
+      element: <Cart />,
     },
     {
-      path:"/checkout",
-      element:<Checkout/>
-    }
+      path: "/checkout",
+      element: <Checkout />,
+    },
   ]);
   return (
     <div>
