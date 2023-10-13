@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "./Header";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import { addToCart, removeFromCart } from "../Utils/Redux/CartSlice";
+import { addToCart, emptyCart, removeFromCart } from "../Utils/Redux/CartSlice";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart.item);
@@ -41,6 +42,10 @@ const Cart = () => {
     dispatch(addToCart(item));
   };
 
+  const handleDeleteCart = () => {
+    dispatch(emptyCart());
+  };
+
   return (
     <div>
       <Header />
@@ -64,7 +69,7 @@ const Cart = () => {
                     <p className="text-xl font-bold m-2">{newDiscription}...</p>
                     <p className="text-2xl m-2">{price}$</p>
                   </div>
-                  <div className="flex flex-col items-center">
+                  <div className="flex flex-col items-center justify-evenly">
                     <button
                       onClick={() => {
                         handleAddToCart(data.item);
@@ -87,6 +92,14 @@ const Cart = () => {
               );
             })}
           </div>
+          <button
+            onClick={handleDeleteCart}
+            className="text-2xl ml-[100px] bg-red-600 text-white mt-4 rounded  w-[200px]"
+          >
+            <span>
+             EmptyCart <DeleteIcon />
+            </span>
+          </button>
           <h1
             className="bg-green-400 text-xl font-normal rounded w-[250px] h-[40px] text-center mx-auto
          m-4"
