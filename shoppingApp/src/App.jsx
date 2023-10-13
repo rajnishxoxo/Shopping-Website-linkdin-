@@ -8,6 +8,7 @@ import JewellerySection from "./Components/ProductSection/JewellerySection";
 import ElectronicsSection from "./Components/ProductSection/ElectronicsSection";
 import SingleDisplayProduct from "./Components/ProductSection/SingleDisplayProduct";
 import Cart from "./Components/Cart";
+import Checkout from "./Components/Checkout";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const App = () => {
     {
       path:"/cart",
       element:<Cart/>
+    },
+    {
+      path:"/checkout",
+      element:<Checkout/>
     }
   ]);
   return (

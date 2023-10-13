@@ -4,6 +4,7 @@ import Header from "./Header";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import { addToCart, emptyCart, removeFromCart } from "../Utils/Redux/CartSlice";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart.item);
@@ -11,6 +12,8 @@ const Cart = () => {
   if (cart === null) return;
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const itemCount = {};
   cart.map((data) => {
@@ -44,6 +47,10 @@ const Cart = () => {
 
   const handleDeleteCart = () => {
     dispatch(emptyCart());
+  };
+
+  const handleNavigateToCheckout = () => {
+    navigate("/checkout");
   };
 
   return (
@@ -97,10 +104,11 @@ const Cart = () => {
             className="text-2xl ml-[100px] bg-red-600 text-white mt-4 rounded  w-[200px]"
           >
             <span>
-             EmptyCart <DeleteIcon />
+              EmptyCart <DeleteIcon />
             </span>
           </button>
           <h1
+            onClick={handleNavigateToCheckout}
             className="bg-green-400 text-xl font-normal rounded w-[250px] h-[40px] text-center mx-auto
          m-4"
           >
