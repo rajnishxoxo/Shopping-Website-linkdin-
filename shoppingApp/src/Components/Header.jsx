@@ -4,8 +4,11 @@ import HomeIcon from "@mui/icons-material/Home";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LoginIcon from "@mui/icons-material/Login";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const cart = useSelector((state) => state.cart.item);
+
   return (
     <div className="flex flex-col w-full mt-2 justify-evenly shadow-lg h-auto items-center lg:flex-row lg:h-20">
       <div className="w-2/5">
@@ -18,18 +21,18 @@ const Header = () => {
               Home <HomeIcon />
             </li>
           </Link>
-          <Link to={'/cart'}>
+          <Link to={"/cart"}>
             <li class="text-2xl mb-2 font-medium relative">
-              Cart <ShoppingCartIcon />
+              Cart <ShoppingCartIcon /> {cart.length}
             </li>
           </Link>
           <li class="text-2xl mb-2 font-medium relative">
             WishList <FavoriteIcon />
           </li>
-          <Link to={'/login'}>
-          <li class="text-2xl mb-2 font-medium relative">
-            Login <LoginIcon />
-          </li>
+          <Link to={"/login"}>
+            <li class="text-2xl mb-2 font-medium relative">
+              Login <LoginIcon />
+            </li>
           </Link>
         </ul>
       </div>
