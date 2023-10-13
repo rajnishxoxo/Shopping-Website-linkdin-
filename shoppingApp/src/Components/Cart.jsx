@@ -26,7 +26,7 @@ const Cart = () => {
   });
 
   const uniqueItem = Object.keys(itemCount).map((data) => {
-    // console.log(data)
+ 
     const firstOccur = cart.find((item) => {
       return item.id == data;
     });
