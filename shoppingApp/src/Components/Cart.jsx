@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "./Header";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
+import { addToCart, removeFromCart } from "../Utils/Redux/CartSlice";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart.item);
 
   if (cart === null) return;
+
+  const dispatch = useDispatch();
 
   const itemCount = {};
   cart.map((data) => {
@@ -29,6 +32,14 @@ const Cart = () => {
       count: itemCount[data],
     };
   });
+
+  const handleremoveFromCart = (item) => {
+    dispatch(removeFromCart(item));
+  };
+
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+  };
 
   return (
     <div>
@@ -54,11 +65,21 @@ const Cart = () => {
                     <p className="text-2xl m-2">{price}$</p>
                   </div>
                   <div className="flex flex-col items-center">
-                    <button className="text-2xl bg-green-500 font-bold rounded  w-[40px]">
+                    <button
+                      onClick={() => {
+                        handleAddToCart(data.item);
+                      }}
+                      className="text-2xl bg-green-500 font-bold rounded  w-[40px]"
+                    >
                       +
                     </button>
                     <p className="text-3xl ">Total Count :{count}</p>
-                    <button className="text-2xl bg-green-500 font-bold rounded  w-[40px]">
+                    <button
+                      onClick={() => {
+                        handleremoveFromCart(data.item);
+                      }}
+                      className="text-2xl bg-green-500 font-bold rounded  w-[40px]"
+                    >
                       -
                     </button>
                   </div>
@@ -82,7 +103,9 @@ const Cart = () => {
             className="w-[300px] mt-10"
             src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838909/Cart_bk4xgl.jpg"
           ></img>
-          <h1 className="text-center text-blue-700 text-3xl font-normal">YOUR CART IS EMPTY.</h1>
+          <h1 className="text-center text-blue-700 text-3xl font-normal">
+            YOUR CART IS EMPTY.
+          </h1>
         </div>
       )}
     </div>
