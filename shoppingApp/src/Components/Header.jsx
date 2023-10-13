@@ -27,17 +27,15 @@ const Header = () => {
 
   const handleLogout = () => {
     signOut(auth)
-      .then(() => {
-        console.log("sign out");
-      })
+      .then(() => {})
       .catch((error) => {
         // An error happened.
       });
   };
 
-  const handleShowLoginPage =()=>{
-    navigate("/login")
-  }
+  const handleShowLoginPage = () => {
+    navigate("/login");
+  };
 
   return (
     <div className="flex flex-col w-full mt-2 justify-evenly shadow-lg h-auto items-center lg:flex-row lg:h-20">
