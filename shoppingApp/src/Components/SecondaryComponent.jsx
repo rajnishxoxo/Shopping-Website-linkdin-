@@ -1,5 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  electronicsImageURL,
+  jewelleryImageURL,
+  menImageURL,
+  womensClothingImageURL,
+} from "../Utils/constant";
 
 const SecondaryComponent = () => {
   const navigate = useNavigate();
@@ -19,7 +25,7 @@ const SecondaryComponent = () => {
             onClick={() => {
               handleImageClick("menswear");
             }}
-            src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Male-Cloth_fyyrzb.jpg"
+            src={menImageURL}
             alt="Image 2"
           />
         </div>
@@ -29,7 +35,7 @@ const SecondaryComponent = () => {
             onClick={() => {
               handleImageClick("jewellery");
             }}
-            src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/model-jwellery_qlcjog.jpg"
+            src={jewelleryImageURL}
             alt="Image 3"
           />
         </div>
@@ -39,7 +45,7 @@ const SecondaryComponent = () => {
             onClick={() => {
               handleImageClick("womenswear");
             }}
-            src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838912/Cloths_kpwmp2.jpg"
+            src={womensClothingImageURL}
             alt="Image 4"
           />
         </div>
@@ -49,7 +55,7 @@ const SecondaryComponent = () => {
             onClick={() => {
               handleImageClick("electronics");
             }}
-            src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Electronics_lrjvlg.jpg"
+            src={electronicsImageURL}
             alt="Image 5"
           />
         </div>
