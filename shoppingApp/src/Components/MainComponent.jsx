@@ -1,4 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
+import {
+  bookImageURL,
+  clothImageURL,
+  electronicsImageURL,
+  jewelleryImageURL,
+  menImageURL,
+  shoeImageURL,
+  womensClothingImageURL,
+} from "../Utils/constant";
 
 const MainComponent = () => {
   const scrollContainerRef = useRef(null);
@@ -41,46 +50,25 @@ const MainComponent = () => {
     <div className="relative w-full overflow-x-scroll" ref={scrollContainerRef}>
       <div className="flex">
         <div className="w-[400px] flex-shrink-0">
-          <img
-            src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Shoe_e2yc1d.jpg"
-            alt="Image 1"
-          />
+          <img src={shoeImageURL} alt="Image 1" />
         </div>
         <div className="w-[400px] flex-shrink-0">
-          <img
-            src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Male-Cloth_fyyrzb.jpg"
-            alt="Image 2"
-          />
+          <img src={menImageURL} alt="Image 2" />
         </div>
         <div className="w-[400px] flex-shrink-0">
-          <img
-            src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/model-jwellery_qlcjog.jpg"
-            alt="Image 3"
-          />
+          <img src={jewelleryImageURL} alt="Image 3" />
         </div>
         <div className="w-[400px] flex-shrink-0">
-          <img
-            src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838912/Cloths_kpwmp2.jpg"
-            alt="Image 4"
-          />
+          <img src={womensClothingImageURL} alt="Image 4" />
         </div>
         <div className="w-[400px] flex-shrink-0">
-          <img
-            src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Electronics_lrjvlg.jpg"
-            alt="Image 5"
-          />
+          <img src={electronicsImageURL} alt="Image 5" />
         </div>
         <div className="w-[400px] flex-shrink-0">
-          <img
-            src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838761/Book_lc6ikb.jpg"
-            alt="Image 6"
-          />
+          <img src={bookImageURL} alt="Image 6" />
         </div>
         <div className="w-[400px] flex-shrink-0">
-          <img
-            src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Cloth-banner_ylavk9.jpg"
-            alt="Image 7"
-          />
+          <img src={clothImageURL} alt="Image 7" />
         </div>
       </div>
     </div>
