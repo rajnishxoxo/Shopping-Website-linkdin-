@@ -5,6 +5,7 @@ import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import { addToCart, emptyCart, removeFromCart } from "../Utils/Redux/CartSlice";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
+import { emptyCartImageURL } from "../Utils/constant";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart.item);
@@ -122,7 +123,7 @@ const Cart = () => {
         <div className="w-full flex flex-col items-center">
           <img
             className="w-[300px] mt-10"
-            src="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838909/Cart_bk4xgl.jpg"
+            src={emptyCartImageURL}
           ></img>
           <h1 className="text-center text-blue-700 text-3xl font-normal">
             YOUR CART IS EMPTY.

@@ -12,3 +12,5 @@ export const electronicsImageURL ="https://res.cloudinary.com/dxguqzge7/image/up
 export const bookImageURL ="https://res.cloudinary.com/dxguqzge7/image/upload/v1682838761/Book_lc6ikb.jpg";
 
 export const clothImageURL = "https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Cloth-banner_ylavk9.jpg";
+
+export const emptyCartImageURL = "https://res.cloudinary.com/dxguqzge7/image/upload/v1682838909/Cart_bk4xgl.jpg"
