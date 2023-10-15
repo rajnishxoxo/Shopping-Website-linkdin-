@@ -9,7 +9,7 @@ const Footer = () => {
         <p>&copy; Made by - Rajnish Singh , 2023 </p>
         <div className="social-links">
           <a
-            href="https://github.com/rajnish"
+            href="https://github.com/rajnishxoxo"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 text-2xl hover:text-blue-600 mx-2"
