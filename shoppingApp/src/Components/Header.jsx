@@ -4,12 +4,18 @@ import HomeIcon from "@mui/icons-material/Home";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LoginIcon from "@mui/icons-material/Login";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Utils/firebase";
+import { userLoginStatus } from "../Utils/Redux/userSlice";
 
 const Header = () => {
   const cart = useSelector((state) => state.cart.item);
+
+  const user = useSelector((state) => state.user.userLoginStatus);
+  const dispatch = useDispatch();
+
+  console.log(user);
 
   const [userPresent, setUserPresent] = useState(true);
 
@@ -28,7 +34,7 @@ const Header = () => {
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        
+        dispatch(userLoginStatus(false));
       })
       .catch((error) => {
         // An error happened.
