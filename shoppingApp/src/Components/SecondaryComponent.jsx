@@ -8,6 +8,7 @@ import {
 } from "../Utils/constant";
 import { useSelector } from "react-redux";
 import SelfImprovementIcon from '@mui/icons-material/SelfImprovement';
+import Footer from "./Footer";
 
 const SecondaryComponent = () => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const SecondaryComponent = () => {
 
   console.log(user);
   return (
+    <>
     <div>
       <h1 className=" text-center text-2xl mt-4 text-purple-700 font-bold">
         Welcome {name} <SelfImprovementIcon/>
@@ -71,7 +73,10 @@ const SecondaryComponent = () => {
           />
         </div>
       </div>
+      
     </div>
+    <Footer/>
+    </>
   );
 };
 

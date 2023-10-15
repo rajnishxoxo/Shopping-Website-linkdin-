@@ -14,6 +14,8 @@ const Header = () => {
   const cart = useSelector((state) => state.cart.item);
 
   const user = useSelector((state) => state.user.userLoginStatus);
+  const userDetail = useSelector((state) => state.user.userInfo);
+  const { name, mail } = userDetail;
 
   const dispatch = useDispatch();
 
@@ -71,7 +73,8 @@ const Header = () => {
               onClick={handleLogout}
               className="text-2xl mb-2 font-medium relative"
             >
-              Logout <LoginIcon />
+              Logout <LoginIcon /> 
+             
             </button>
           ) : (
             <button
