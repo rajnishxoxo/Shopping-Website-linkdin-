@@ -5,12 +5,13 @@ import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDiss
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../Utils/firebase";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { userLoginStatus } from "../Utils/Redux/userSlice";
+import { addUserInfo, userLoginStatus } from "../Utils/Redux/userSlice";
 
 const Login = () => {
   const [newUser, setNewUser] = useState(false);
@@ -26,7 +27,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleNewUserFormSubmission = () => {
+  const handleNewUserFormSubmission = async () => {
     const formvalidationMessage = validateEmailPasswordName(
       email.current.value,
       password.current.value,
@@ -36,7 +37,7 @@ const Login = () => {
     setNewUserFormError(formvalidationMessage);
 
     if (formvalidationMessage == null) {
-      createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
         auth,
         email.current.value,
         password.current.value
@@ -44,6 +45,25 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           dispatch(userLoginStatus(true));
+          updateProfile(auth.currentUser, {
+            displayName: name.current.value,
+          })
+            .then(() => {
+              const { uid, email, displayName } = auth.currentUser;
+
+              dispatch(
+                addUserInfo({
+                  uid: uid,
+                  mail: email,
+                  name: displayName,
+                })
+              );
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+            });
+
           navigate("/");
         })
         .catch((error) => {
@@ -58,14 +78,15 @@ const Login = () => {
     }, 4000);
   };
 
-  const handleLoginFormSubmission = () => {
-    signInWithEmailAndPassword(
+  const handleLoginFormSubmission = async () => {
+    await signInWithEmailAndPassword(
       auth,
       email.current.value,
       password.current.value
     )
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log(user)
         dispatch(userLoginStatus(true));
         navigate("/");
       })

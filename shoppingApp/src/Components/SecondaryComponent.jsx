@@ -6,6 +6,8 @@ import {
   menImageURL,
   womensClothingImageURL,
 } from "../Utils/constant";
+import { useSelector } from "react-redux";
+import SelfImprovementIcon from '@mui/icons-material/SelfImprovement';
 
 const SecondaryComponent = () => {
   const navigate = useNavigate();
@@ -13,8 +15,16 @@ const SecondaryComponent = () => {
   const handleImageClick = (productPage) => {
     navigate(`/product/${productPage}`);
   };
+
+  const user = useSelector((state) => state.user.userInfo);
+  const { name, mail } = user;
+
+  console.log(user);
   return (
     <div>
+      <h1 className=" text-center text-2xl mt-4 text-red-600 font-bold">
+        Welcome {name} <SelfImprovementIcon/>
+      </h1>
       <h1 className="text-center text-6xl mt-4 text-green-600 font-normal">
         Categories
       </h1>

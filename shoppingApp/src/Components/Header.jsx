@@ -14,6 +14,7 @@ const Header = () => {
   const cart = useSelector((state) => state.cart.item);
 
   const user = useSelector((state) => state.user.userLoginStatus);
+
   const dispatch = useDispatch();
 
   const [userPresent, setUserPresent] = useState(true);
