@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "./Header";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import { addToCart, emptyCart, removeFromCart } from "../Utils/Redux/CartSlice";
+import { addToCart, emptyCart, removeFromCart } from "../Utils/Redux/cartSlice";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 import { emptyCartImageURL } from "../Utils/constant";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../Utils/firebase";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart.item);
-
   if (cart === null) return;
 
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+      } else {
+        navigate("/login");
+      }
+    });
+  }, []);
 
   const itemCount = {};
   cart.map((data) => {
@@ -25,13 +34,10 @@ const Cart = () => {
       itemCount[id] = 1;
     }
   });
-
   const uniqueItem = Object.keys(itemCount).map((data) => {
- 
     const firstOccur = cart.find((item) => {
       return item.id == data;
     });
-
     return {
       item: firstOccur,
       count: itemCount[data],
@@ -121,10 +127,7 @@ const Cart = () => {
         </div>
       ) : (
         <div className="w-full flex flex-col items-center">
-          <img
-            className="w-[300px] mt-10"
-            src={emptyCartImageURL}
-          ></img>
+          <img className="w-[300px] mt-10" src={emptyCartImageURL}></img>
           <h1 className="text-center text-blue-700 text-3xl font-normal">
             YOUR CART IS EMPTY.
           </h1>
