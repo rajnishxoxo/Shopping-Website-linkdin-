@@ -8,14 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Utils/firebase";
 import { userLoginStatus } from "../Utils/Redux/userSlice";
+import { emptyCart } from "../Utils/Redux/cartSlice";
 
 const Header = () => {
   const cart = useSelector((state) => state.cart.item);
 
   const user = useSelector((state) => state.user.userLoginStatus);
   const dispatch = useDispatch();
-
-  console.log(user);
 
   const [userPresent, setUserPresent] = useState(true);
 
@@ -35,6 +34,7 @@ const Header = () => {
     signOut(auth)
       .then(() => {
         dispatch(userLoginStatus(false));
+        dispatch(emptyCart());
       })
       .catch((error) => {
         // An error happened.

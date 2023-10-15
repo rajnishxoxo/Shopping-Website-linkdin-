@@ -11,6 +11,7 @@ import Cart from "./Components/Cart";
 import Checkout from "./Components/Checkout";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Utils/firebase";
+import PrivateRoute from "./Components/PrivateRoute";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,6 +25,8 @@ const App = () => {
       }
     });
   }, []);
+
+  console.log(isLoggedIn);
 
   const router = createBrowserRouter([
     {
@@ -57,8 +60,9 @@ const App = () => {
     },
     {
       path: "/cart",
-      element: <Cart />,
+      element: <Cart/>,
     },
+    ,
     {
       path: "/checkout",
       element: <Checkout />,
