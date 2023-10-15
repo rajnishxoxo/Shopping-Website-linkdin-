@@ -86,8 +86,17 @@ const Login = () => {
     )
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user)
+        console.log(user);
+        const { displayName, email, uid } = user;
         dispatch(userLoginStatus(true));
+        dispatch(
+          addUserInfo({
+            uid: uid,
+            mail: email,
+            name: displayName,
+          })
+        );
+
         navigate("/");
       })
       .catch((error) => {

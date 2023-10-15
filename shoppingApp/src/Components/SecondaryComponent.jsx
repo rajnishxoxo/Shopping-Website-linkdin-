@@ -17,12 +17,13 @@ const SecondaryComponent = () => {
   };
 
   const user = useSelector((state) => state.user.userInfo);
+
   const { name, mail } = user;
 
   console.log(user);
   return (
     <div>
-      <h1 className=" text-center text-2xl mt-4 text-red-600 font-bold">
+      <h1 className=" text-center text-2xl mt-4 text-purple-700 font-bold">
         Welcome {name} <SelfImprovementIcon/>
       </h1>
       <h1 className="text-center text-6xl mt-4 text-green-600 font-normal">
