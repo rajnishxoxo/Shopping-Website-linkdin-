@@ -108,7 +108,7 @@ const Cart = () => {
           </div>
           <button
             onClick={handleDeleteCart}
-            className="text-2xl ml-[100px] bg-red-600 text-white mt-4 rounded  w-[200px]"
+            className="text-2xl ml-[100px] lg:ml-[590px] bg-red-600 text-white mt-4 rounded  w-[200px]"
           >
             <span>
               EmptyCart <DeleteIcon />
