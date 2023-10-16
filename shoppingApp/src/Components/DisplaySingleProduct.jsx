@@ -34,7 +34,7 @@ const DisplaySingleProduct = ({
       <div>
         <Header />
         <div className="flex flex-col mt-2">
-          <p className="bg-blue-600 h-auto text-white rounded w-24">
+          <p className="bg-blue-600 h-auto lg:ml-[200px] text-white rounded w-24">
             {category}
           </p>
 
@@ -67,10 +67,10 @@ const DisplaySingleProduct = ({
           </p>
           <p className=" text-center mt-2 text-xl font-bold">PRICE :{price}$</p>
         </div>
-        <div className="flex flex-row w-3/4 mx-auto   items-center">
+        <div className="flex flex-row w-3/4 mx-auto lg:ml-[500px]  items-center">
           <button
             onClick={handleAddToCart}
-            className="text-xl font-normal m-2  text-white bg-blue-600 rounded"
+            className="text-xl font-normal m-2 lg:ml-5  text-white bg-blue-600 rounded"
           >
             ADD TO CART
           </button>
