@@ -66,7 +66,7 @@ const MensSection = () => {
         return (
           <div
             key={product.id}
-            className="flex flex-col justify-evenly lg:flex lg:grid-rows-2"
+            className="flex flex-col justify-evenly "
           >
             <Link to={`/detail/${id}`} key={id}>
               <div className="w-[200px] mx-auto m-2 border border-solid border-gray-300 shadow rounded-lg">
