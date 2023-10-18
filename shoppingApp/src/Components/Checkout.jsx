@@ -46,7 +46,7 @@ const Checkout = () => {
       </div>
       <button
         onClick={handleDummyCheckout}
-        className="w-[200px] text-white h-[40px] ml-24 mt-10 text-center bg-blue-600"
+        className="w-[200px] text-white h-[40px] ml-24 lg:ml-[580px] mt-10 text-center bg-blue-600"
       >
         Proceed to CheckOut
       </button>
