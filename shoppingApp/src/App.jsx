@@ -27,7 +27,7 @@ const App = () => {
     });
   }, []);
 
-  console.log(isLoggedIn);
+ 
 
   const router = createBrowserRouter([
     {

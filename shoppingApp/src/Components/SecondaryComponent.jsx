@@ -21,7 +21,7 @@ const SecondaryComponent = () => {
 
   const { name, mail } = user;
 
-  console.log(user);
+
   return (
     <>
     <div>
