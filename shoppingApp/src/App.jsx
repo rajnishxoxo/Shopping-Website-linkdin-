@@ -12,6 +12,7 @@ import Checkout from "./Components/Checkout";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Utils/firebase";
 import PrivateRoute from "./Components/PrivateRoute";
+import OrderConfirmation from "./Components/OrderConfirmation";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -67,6 +68,10 @@ const App = () => {
       path: "/checkout",
       element: <Checkout />,
     },
+    {
+      path: "/orderConfirmation",
+      element: <OrderConfirmation />,
+    }
   ]);
   return (
     <div>

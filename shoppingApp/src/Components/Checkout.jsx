@@ -11,7 +11,6 @@ const Checkout = () => {
 
   const total = cart.map((data) => data.price);
 
-
   const costOfCart = total.reduce((acc, cur) => {
     return (acc = acc + cur);
   }, 0);
@@ -20,6 +19,10 @@ const Checkout = () => {
 
   const handleBackToCart = () => {
     navigate("/cart");
+  };
+
+  const handleDummyCheckout = () => {
+   navigate('/orderConfirmation')
   };
 
   return (
@@ -41,9 +44,12 @@ const Checkout = () => {
           <p className="text-2xl font-normal">{shippingCharge + costOfCart}$</p>
         </div>
       </div>
-      <p className="w-[200px] text-white h-[40px] mx-auto mt-10 text-center bg-blue-600">
+      <button
+        onClick={handleDummyCheckout}
+        className="w-[200px] text-white h-[40px] ml-24 mt-10 text-center bg-blue-600"
+      >
         Proceed to CheckOut
-      </p>
+      </button>
       <p
         onClick={handleBackToCart}
         className="w-[200px] text-white h-[40px] mx-auto mt-10 text-center bg-green-600"
